@@ -1,5 +1,4 @@
 import selectExpenses from '../../selectors/expenses.js';
-import expectExport from 'expect/build/';
 import moment from 'moment';
 import expenses from '../fixtures/expenses';
 

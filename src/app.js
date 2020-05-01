@@ -10,27 +10,28 @@ import configureStore from './store/configureStore';
 import { addExpense, editExpense, removeExpense } from './actions/expenses';
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
+import './firebase/firebase';
 
 const store = configureStore();
 
-store.subscribe(() => {
+// store.subscribe(() => {
     
-    const state = store.getState();
-    // const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-    console.log(state);
-});
+//     const state = store.getState();
+//     // const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+//     // console.log(state);
+// });
 
-const expenseOne = store.dispatch(addExpense({ description: 'food bill', amount: 200, createdAt: 1200}));
-store.dispatch(addExpense({ description: 'water bill', amount: 100, createdAt: 1100}));
-store.dispatch(addExpense({ description: 'rent', amount: 500, createdAt: 100}));
+// const expenseOne = store.dispatch(addExpense({ description: 'food bill', amount: 200, createdAt: 1200}));
+// store.dispatch(addExpense({ description: 'water bill', amount: 100, createdAt: 1100}));
+// store.dispatch(addExpense({ description: 'rent', amount: 500, createdAt: 100}));
 
 // setTimeout(() => {
 //     store.dispatch(setTextFilter('bill'));
 // }, 1000);
 
-setTimeout(() => {
-    store.dispatch(sortByAmount());
-}, 3000);
+// setTimeout(() => {
+//     store.dispatch(sortByAmount());
+// }, 3000);
 
 // const idToRemove = expenseOne.expense.id;
 

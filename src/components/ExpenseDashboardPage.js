@@ -3,7 +3,10 @@ import ExpensesList  from './ExpenseList';
 import { connect } from 'react-redux';
 import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } from '../actions/filters';
 import 'react-dates/initialize';
-import { DateRangePicker } from 'react-dates'
+import { DateRangePicker } from 'react-dates';
+import numeral from 'numeral';
+import getFilteredExpenses from '../selectors/expenses';
+import getExpensesSum from '../selectors/expensesSum';
 
 class ExpenseDashboardPage extends React.Component {
     state = {
@@ -20,10 +23,19 @@ class ExpenseDashboardPage extends React.Component {
             }
         })
     }
+    getExpensesSum = (expenses, filters) => {
+        
+        const filteredExpenses = getFilteredExpenses(expenses, filters);
+        const filteredExpensesSum = getExpensesSum(filteredExpenses);
+
+        return <p>You are viewing {filteredExpenses.length} expenses, sum to {numeral(filteredExpensesSum / 100).format('$0,0.00')}</p>
+        
+    }
     render() {
         return (
             <div>
                 <p>This is expense dashboard page</p>
+                {this.getExpensesSum(this.props.expenses, this.props.filters)}
                 <input type="text" value={this.props.filters.text}
                     onChange={(e) => {
                         this.props.dispatch(setTextFilter(e.target.value));
@@ -60,6 +72,7 @@ class ExpenseDashboardPage extends React.Component {
 
 const connectReactRedux = (state) => {
     return {
+        expenses: state.expenses,
         filters: state.filters
     }
 };
