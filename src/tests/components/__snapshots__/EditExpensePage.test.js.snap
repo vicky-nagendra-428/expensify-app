@@ -11,7 +11,7 @@ exports[`check edit expense page render 1`] = `
         "amount": 120,
         "createdAt": 0,
         "description": "Gum",
-        "id": 1,
+        "id": "1",
         "note": "",
       }
     }
