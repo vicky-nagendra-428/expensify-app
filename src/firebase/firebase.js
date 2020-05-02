@@ -15,8 +15,9 @@ const firebaseConfig = {
   const defaultProj = firebase.initializeApp(firebaseConfig);
 
 const db = defaultProj.database();
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export { firebase, db as default };
+export { firebase, googleAuthProvider, db as default };
 
 // db.ref('notes').on('child_removed', (snapshot) => {
 //     console.log(snapshot.key, snapshot.val())
